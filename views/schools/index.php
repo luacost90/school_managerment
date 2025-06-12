@@ -1,0 +1,1 @@
+<h2>Pagina de index de la entidad</h2>
