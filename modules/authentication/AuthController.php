@@ -1,8 +1,31 @@
 <?php
+require_once 'core/database/Database.php';
+require_once 'AuthRepository.php';
+require_once 'AuthService.php';
 
 class AuthController{
-    public function login(){
+    public function viewLogin(){
         include 'views/login.php';
+    }
+
+    public function login(string $username, string $password){
+        $db = (new Database())->getConnection();
+
+        // Inyectamos la implementación concreta del repositorio
+        $repository = new AuthRepository($db);
+        $authService = new AuthService($repository);
+
+        $user = $authService->login($username, $password);
+
+        if($user){     
+            session_start();
+            $_SESSION['user_id'] = $user->id;
+            $_SESSION['username'] = $user->username;
+            $_SESSION['rol'] = $user->rol;
+        }else{
+            echo json_encode(['success' => false, 'error' => 'Credenciales inválidas']);
+        }
+
     }
 }
 
