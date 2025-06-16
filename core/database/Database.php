@@ -10,9 +10,9 @@ class Database{
     public function getConnection(): PDO{
         if(!isset($this->conn)){
             try {
-                $dsn = "mysql:{$this->host};dbname={$this->db};charset=utf8mb4";
+                $dsn = "mysql:host={$this->host};dbname={$this->db};charset=utf8mb4";
                 $this->conn = new PDO($dsn, $this->user, $this->pass);
-                $this->conn->setAttributes(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+                $this->conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
             } catch (PDOException $e) {
                 die("Conexion fallida". $e->getMessage());
             }

@@ -10,7 +10,7 @@
             $this->id = $this->data['id_user'] ?? '';
             $this->username = $this->data['username'] ?? '';
             $this->password = $this->data['password'] ?? '';
-            $this->rol = $this->data['rol_name'];
+            $this->rol = $this->data['fk_rol'] ?? '';
         }
 
     }

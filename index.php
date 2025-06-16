@@ -7,7 +7,7 @@
     $uri = str_replace($basePath, '', $uri);
 
     $routes = require 'core/routes/web.php';
-
+    
     
     if(isset($routes[$uri])){
         $route = $routes[$uri];
@@ -18,14 +18,14 @@
             $method = $route['method'];
             $controller = new $controllerClass();
 
+            include 'views/includes/footer.php';
             if(method_exists($controller, $method)){
                 $controller->$method();
                 exit;
             }
         }
     }
-
+    
     http_response_code(404);
     echo 'Página no encontrada';
-
 ?>

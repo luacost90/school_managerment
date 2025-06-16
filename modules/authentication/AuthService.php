@@ -9,10 +9,13 @@
         }
 
         public function login(string $username, string $password) : ? User{
+            
             $user = $this->repository->findByUsername($username);
-
+            
+            
             if($user && password_verify($password, $user->password)){
-                return $user;
+                $userRol = $this->repository->findByUserByRole($user->rol);
+                return ['id' => $user->id, 'username' => $user->username, 'role' => $userRole['role_name']];
             }
 
             return null;

@@ -9,9 +9,10 @@
             $this->conn = $conn;
         }
 
-        public function findByUsername(string $username): ?User{
-            $sql = "SELECT u.id_user, u.username, u.password, r.rol_name FROM users u INNER JOIN roles r ON u.fk_rol = r.id_rol WHERE u.username = :username LIMIT 1";
-            $statement = $this->$conn->prepare($sql);
+        public function findByUsername(string $username): ?User
+        {
+            $sql = "SELECT * FROM users WHERE username = :username LIMIT 1";
+            $statement = $this->conn->prepare($sql);
             $statement->bindParam(':username', $username);
             $statement->execute();
 
@@ -19,5 +20,19 @@
 
             return $row ? new User($row) : null;
         }
+
+        public function findByUserByRole(int $fk_rol){
+            $sql = "SELECT role_name from roles WHERE id_rol = :fk_rol LIMIT 1";
+            $statement-> $this->conn->prepare($sql);
+            $statement->bindParam(':id_rol', $fk_rol);
+            $statement->execute();
+
+            $row = $statement->fetch(POD::FETCH_ASSOC);
+
+            return $row; 
+
+        }
+
+
     }
 ?>

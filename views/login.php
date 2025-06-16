@@ -1,7 +1,8 @@
-<h2>Login</h2>
-<form id="loginForm">
-    <input type="text" placeholder="Username" name="username" id="username">
-    <input type="pass" placeholder="Contraseña" name="password" id="password">
-    <button type="submit">Iniciar Sesión</button>
-</form>
-<script type="module" src="/js/main.js"></script>
+<div class="containerForm">
+    <form id="loginForm" class="card__form">
+        <h2 class="card__form-title">Login</h2>
+        <input type="text" class="card__form-input" placeholder="Username" name="username" id="username">
+        <input type="password" class="card__form-input"  placeholder="Contraseña" name="password" id="password" autocomplete>
+        <button class="card__form-button"  type="submit">Iniciar Sesión</button>
+    </form>
+</div>

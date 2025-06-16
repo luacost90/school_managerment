@@ -1,5 +1,6 @@
 <?php
-require_once 'core/database/Database.php';
+// En AuthController.php
+require_once($_SERVER['DOCUMENT_ROOT'] . '/sistema_aped/core/database/Database.php');
 require_once 'AuthRepository.php';
 require_once 'AuthService.php';
 
@@ -19,11 +20,11 @@ class AuthController{
 
         if($user){     
             session_start();
-            $_SESSION['user_id'] = $user->id;
-            $_SESSION['username'] = $user->username;
-            $_SESSION['rol'] = $user->rol;
+            $_SESSION['user_id'] = $user['id'];
+            $_SESSION['username'] = $user['username'];
+            $_SESSION['rol'] = $user['rol'];
         }else{
-            echo json_encode(['success' => false, 'error' => 'Credenciales inválidas']);
+            echo json_encode(['success' => false, 'error' => 'Usuario o contraseña no válidas']);
         }
 
     }
