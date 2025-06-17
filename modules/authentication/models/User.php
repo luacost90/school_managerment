@@ -7,10 +7,10 @@
         public string $rol;
 
         public function __construct(array $data = []){
-            $this->id = $this->data['id_user'] ?? '';
-            $this->username = $this->data['username'] ?? '';
-            $this->password = $this->data['password'] ?? '';
-            $this->rol = $this->data['fk_rol'] ?? '';
+            $this->id = $data['id_user'] ?? null;
+            $this->username = $data['username'] ?? '';
+            $this->password = $data['password'] ?? '';
+            $this->rol = $data['fk_rol'] ?? null;
         }
 
     }

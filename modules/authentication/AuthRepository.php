@@ -18,16 +18,17 @@
 
             $row = $statement->fetch(PDO::FETCH_ASSOC);
 
+            // Ensure User constructor accepts $row as an array
             return $row ? new User($row) : null;
         }
 
         public function findByUserByRole(int $fk_rol){
             $sql = "SELECT role_name from roles WHERE id_rol = :fk_rol LIMIT 1";
-            $statement-> $this->conn->prepare($sql);
-            $statement->bindParam(':id_rol', $fk_rol);
+            $statement = $this->conn->prepare($sql);
+            $statement->bindParam(':fk_rol', $fk_rol);
             $statement->execute();
 
-            $row = $statement->fetch(POD::FETCH_ASSOC);
+            $row = $statement->fetch(PDO::FETCH_ASSOC);
 
             return $row; 
 
