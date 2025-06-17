@@ -9,6 +9,10 @@ class AuthController{
         include 'views/login.php';
     }
 
+    public function viewDashboard(){
+        include 'views/dashboard.php';
+    }
+
     public function login(string $username, string $password){
         $db = (new Database())->getConnection();
 
@@ -28,6 +32,13 @@ class AuthController{
             echo json_encode(['success' => false, 'error' => 'Usuario o contraseña no válidas']);
         }
 
+    }
+
+    public function logout(){
+        session_start();
+        session_unset();
+        session_destroy();
+        echo json_encode(['success' => true]);
     }
 }
 

@@ -1,3 +1,9 @@
+<?php
+    if (!defined('ACCESS')) {
+        header("Location: /sistema_aped/");
+        exit;
+    }
+?>
 <div class="containerForm">
     <form id="loginForm" class="card__form">
         <h2 class="card__form-title">Login</h2>

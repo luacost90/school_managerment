@@ -15,7 +15,7 @@ export function singInLogin(){
         const response = await post('core/routes/api/login.php', data);
 
         if(response.success){
-            location.href = 'views/dashboard.php';
+            location.href = './dashboard';
         }else{
             console.log("No entra")
             showMessage(response.error, 'danger');
